@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>551550483737-829vdv44m426fo0ri83o9ch3t6rapgkp.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.551550483737-829vdv44m426fo0ri83o9ch3t6rapgkp</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB1_tRl3yEpM0HUcdPcvWBSz-uUqLl10I8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>551550483737</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>Alexander-My.Dunedayn</string>
+	<key>PROJECT_ID</key>
+	<string>msk-dunedayn</string>
+	<key>STORAGE_BUCKET</key>
+	<string>msk-dunedayn.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:551550483737:ios:d74439cc3f182d57efd988</string>
+	<key>DATABASE_URL</key>
+	<string>https://msk-dunedayn-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>
