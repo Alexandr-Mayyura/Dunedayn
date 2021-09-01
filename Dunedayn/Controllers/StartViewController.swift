@@ -7,7 +7,7 @@
 import Foundation
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class StartViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var scrollView: UIScrollView!
 

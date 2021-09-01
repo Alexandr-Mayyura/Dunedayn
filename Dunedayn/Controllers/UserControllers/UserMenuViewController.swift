@@ -7,10 +7,32 @@
 
 import UIKit
 
-class MenuViewController: UIViewController {
+class UserMenuCell: UICollectionViewCell {
+    var nameLabel: UILabel?
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    
+        nameLabel = UILabel(frame: CGRect(x: contentView.bounds.size.height/2 - contentView.bounds.size.height/2.2, y: contentView.bounds.size.height/2 - contentView.bounds.size.height/4.5, width: contentView.bounds.size.width, height: 40))
+        
+        nameLabel?.textColor = .white
+        nameLabel?.textAlignment = .center
+        nameLabel?.font = nameLabel?.font.withSize(32)
+        
+        contentView.addSubview(nameLabel!)
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
 
-    let colorCell = [UIColor.red, UIColor.green, UIColor.gray, UIColor.blue, UIColor.yellow, UIColor.purple]
-    let nameMenu = ["Календарь", "Статистика", "Посещение", "Кит лист", "Заказы", "Чек лист", "Калькулятор"]
+
+
+class UserMenuViewController: UIViewController {
+
+    let nameMenu = ["Игры", "Статистика", "Посещение", "Кит лист", "Заказы", "Чек лист", "Калькулятор"]
     
     let image = UIImage(named: "kryptek")
 
@@ -18,7 +40,7 @@ class MenuViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
-        cv.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "menuCell")
+        cv.register(UserMenuCell.self, forCellWithReuseIdentifier: "menuCell")
         
         return cv
     }()
@@ -28,9 +50,9 @@ class MenuViewController: UIViewController {
 
         collectionView.backgroundColor = .black
         collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
-        collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+                        collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+                        collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+                        collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
         
         self.title = "Lock"
     }
@@ -45,7 +67,7 @@ class MenuViewController: UIViewController {
     }
 }
 
-extension MenuViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+extension UserMenuViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width - 20, height: collectionView.frame.width/4)
@@ -56,32 +78,25 @@ extension MenuViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "menuCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "menuCell", for: indexPath) as! UserMenuCell
         cell.backgroundColor = .darkGray
         cell.layer.cornerRadius = 10
-        let nameLabel = UILabel()
-        nameLabel.frame = CGRect(x: cell.bounds.size.height/2 - cell.bounds.size.height/2.2, y: cell.bounds.size.height/2 - cell.bounds.size.height/4.5, width: cell.bounds.size.width, height: 40)
         
-        nameLabel.textColor = .white
-        nameLabel.textAlignment = .center
-        nameLabel.font = nameLabel.font.withSize(32)
-        
-        nameLabel.text = nameMenu[indexPath.row]
-        
-        cell.contentView.addSubview(nameLabel)
-        
+        cell.nameLabel?.text = nameMenu[indexPath.row]
+
         return cell
     }
     
-//    private func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-//        performSegue(withIdentifier: "userCell", sender: indexPath)
-//    }
+    private func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        performSegue(withIdentifier: "userCells", sender: indexPath)
+    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
         if indexPath.row == 0 {
-                let viewController = UserTableViewController() // or your custom view controller
+                let viewController = UserCalendarTableViewController() 
                 self.navigationController?.pushViewController(viewController, animated: true)
+            
         }
     }
 }

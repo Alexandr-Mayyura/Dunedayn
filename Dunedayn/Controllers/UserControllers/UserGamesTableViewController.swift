@@ -8,34 +8,7 @@
 import UIKit
 import Firebase
 
-class MyCell: UICollectionViewCell {
-    
-    var nameLabel: UILabel?
-    var markView: UIView?
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        nameLabel = UILabel(frame:  CGRect(x: 0, y: 0, width: contentView.bounds.size.width, height: contentView.bounds.size.height))
-        nameLabel?.textColor = .white
-        nameLabel?.textAlignment = .center
-        nameLabel?.font = nameLabel?.font.withSize(24)
-        nameLabel?.numberOfLines = 3
-        self.contentView.addSubview(nameLabel!)
-        
-   
-        markView = UIView(frame: CGRect(x: 10, y: contentView.bounds.size.height - contentView.bounds.size.height/1.6, width: 20, height: 20))
-        markView?.layer.cornerRadius = .pi * .pi
-        self.contentView.addSubview(markView!)
-        }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-
-class UserCalendarTableViewController: UIViewController {
+class UserGamesTableViewController: UIViewController {
     
 //MARK: add collectionView
     
@@ -43,7 +16,7 @@ class UserCalendarTableViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
-        cv.register(MyCell.self, forCellWithReuseIdentifier: "userCell")
+        cv.register(UserGamesCollectionViewCell.self, forCellWithReuseIdentifier: "userCell")
         
         return cv
     }()
@@ -112,7 +85,7 @@ class UserCalendarTableViewController: UIViewController {
     }
 }
 
-extension UserCalendarTableViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+extension UserGamesTableViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     // MARK: UICollectionViewDelegateFlowLayout
     
@@ -127,7 +100,7 @@ extension UserCalendarTableViewController: UICollectionViewDelegateFlowLayout, U
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "userCell", for: indexPath) as! MyCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "userCell", for: indexPath) as! UserGamesCollectionViewCell
 
         cell.backgroundColor = .darkGray
         cell.layer.cornerRadius = 10
